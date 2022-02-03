@@ -1,0 +1,46 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+<div sec:authorize="isAnonymous()">
+    <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <img th:src="${profile.get('picture')}" th:attr="alt=${profile.get('name')}"/>
+    <h2 th:text="${profile.get('name')}"></h2>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <p><b>Bank accounts</b></p>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <form th:action="@{/bank-book}" th:object="${bankBook}" method="post">
+        <button type="submit">Get</button>
+    </form>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <p><b>Transfer (enter data for transfer in the following format: source account,target account,amount)</b></p>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <form th:action="@{/transfer}" th:object="${transfer}" method="post">
+        <input type="text" id="third" name="data" />
+        <button type="submit">Execute</button>
+    </form>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <p><b>Get ticket info</b></p>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <form th:action="@{/get-stock-quotes}" th:object="${tickets}" method="post">
+        <input type="text" id="first" name="data" />
+        <button type="submit">Real-time</button>
+    </form>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <form th:action="@{/get-historical-quotes}" th:object="${tickets}" method="post">
+        <input type="text" id="second" name="data" />
+        <button type="submit">Historical</button>
+    </form>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <a th:href="@{/logout}">Log Out</a>
+</div>
+</body>
+</html>
