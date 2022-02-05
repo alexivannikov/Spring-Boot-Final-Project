@@ -25,7 +25,7 @@
     </form>
 </div>
 <div sec:authorize="isAuthenticated()">
-    <p><b>Get ticket info</b></p>
+    <p><b>Get tickets info (enter the ticket names without spaces separated by commas)</b></p>
 </div>
 <div sec:authorize="isAuthenticated()">
     <form th:action="@{/get-stock-quotes}" th:object="${tickets}" method="post">

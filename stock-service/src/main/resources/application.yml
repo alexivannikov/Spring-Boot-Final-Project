@@ -1,0 +1,25 @@
+server:
+  port: 8010
+
+token: 8EfuMBEyvaG0SJNW8cqqTGUtMLyEbSClhGMhQLFo
+
+url:
+  quotes: https://api.stockdata.org/v1/data/quote?symbols=%s&api_token=%s
+  historical-quotes: https://api.stockdata.org/v1/data/eod?symbols=%s&api_token=%s
+
+auth:
+  audience: stock-service
+
+spring:
+  application:
+    name: stock-service
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: https://dev-z6wzbvpa.us.auth0.com/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:9999/eureka}

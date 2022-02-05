@@ -13,25 +13,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 @Slf4j
 public class HomeController {
-    private static String userEmail;
-
     @GetMapping("/")
     public String getHome(Model model, @AuthenticationPrincipal OidcUser principal) {
 
         if (principal != null) {
-            userEmail = principal.getUserInfo().getClaims().get("email").toString();
-
-            log.info("USER: {}", userEmail);
-            log.info("ROLES: {}", principal.getAuthorities().toArray()[0]);
+            log.info("ROLES: {}", principal.getAuthorities().toArray());
             log.info("AUT: {}", principal.getAuthorities());
             model.addAttribute("profile", principal.getClaims());
         }
 
         return "index";
     }
-
-    public static String getUserEmail(){
-        return userEmail;
-    }
-
 }
