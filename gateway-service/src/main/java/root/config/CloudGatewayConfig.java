@@ -8,30 +8,38 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 class CloudGatewayConfig {
+    @Value("${service.currency.uri}")
+    private String currencyUri;
+
+    @Value("${service.currency.path}")
+    private String currencyPath;
+
+    @Value("${service.currency.audience}")
+    private String currencyAudience;
 
     @Value("${service.stock.uri}")
     private String stockUri;
 
-    @Value("${service.stock.audience}")
-    private String stockAudience;
-
     @Value("${service.stock.path.stock-quotes}")
-    private String stockQuotes;
+    private String stockQuotesPath;
 
     @Value("${service.stock.path.historical-quotes}")
-    private String historicalQuotes;
+    private String historicalQuotesPath;
 
-    @Value("${service.transfer.audience}")
-    private String transferAudience;
+    @Value("${service.stock.audience}")
+    private String stockAudience;
 
     @Value("${service.transfer.uri}")
     private String transferUri;
 
+    @Value("${service.transfer.bankbook-path}")
+    private String bankBookPath;
+
     @Value("${service.transfer.transfer-path}")
     private String transferPath;
 
-    @Value("${service.transfer.bankbook-path}")
-    private String bankBookPath;
+    @Value("${service.transfer.audience}")
+    private String transferAudience;
 
     private final OAuth2ClientGatewayFilter filterFactory;
 
@@ -42,16 +50,19 @@ class CloudGatewayConfig {
     @Bean
     RouteLocator routeLocator(RouteLocatorBuilder routeLocatorBuilder){
         return routeLocatorBuilder.routes()
-                .route("get-stock-quotes", r -> r.path(stockQuotes)
+                .route("currency-convert", r -> r.path(currencyPath)
+                        .filters(f -> f.filter(filterFactory.apply(currencyAudience)).removeRequestHeader("Cookie"))
+                        .uri(currencyUri))
+                .route("get-stock-quotes", r -> r.path(stockQuotesPath)
                         .filters(f -> f.filter(filterFactory.apply(stockAudience)).removeRequestHeader("Cookie"))
                         .uri(stockUri))
-                .route("get-historical-quotes", r -> r.path(historicalQuotes)
+                .route("get-historical-quotes", r -> r.path(historicalQuotesPath)
                         .filters(f -> f.filter(filterFactory.apply(stockAudience)).removeRequestHeader("Cookie"))
                         .uri(stockUri))
-                .route("transfer", r -> r.path(transferPath)
+                .route("bank-book", r -> r.path(bankBookPath)
                         .filters(f -> f.filter(filterFactory.apply(transferAudience)).removeRequestHeader("Cookie"))
                         .uri(transferUri))
-                .route("bank-book", r -> r.path(bankBookPath)
+                .route("transfer", r -> r.path(transferPath)
                         .filters(f -> f.filter(filterFactory.apply(transferAudience)).removeRequestHeader("Cookie"))
                         .uri(transferUri))
                 .build();

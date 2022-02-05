@@ -13,7 +13,6 @@ import root.service.BankBookService;
 import root.validation.EntityCreated;
 import root.validation.EntityUpdated;
 
-import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 

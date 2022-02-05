@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import root.model.dto.TransactionDto;
 import root.service.TransferService;
 import root.validation.EntityCreated;
-
-import javax.validation.Valid;
 import java.math.BigDecimal;
 
 @RestController

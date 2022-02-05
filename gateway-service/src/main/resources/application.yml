@@ -3,17 +3,17 @@ server:
 
 service:
   currency:
-    uri: lb://CURRENCY-SERVICE
-    path:
-      all-exchange: /all-exchange
-      convert: /convert
+    uri: http://localhost:8000
+    path: /convert
     audience: currency-service
+
   stock:
     uri: http://localhost:8010
     path:
       stock-quotes: /get-stock-quotes
       historical-quotes: /get-historical-quotes
     audience: stock-service
+
   transfer:
     uri: http://localhost:8020
     bankbook-path: /bank-book

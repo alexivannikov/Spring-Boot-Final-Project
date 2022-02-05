@@ -25,17 +25,26 @@
     </form>
 </div>
 <div sec:authorize="isAuthenticated()">
-    <p><b>Get tickets info (Enter the ticket names without spaces separated by commas)</b></p>
+    <p><b>Currency converter (enter data for convert in the following format: amount,source currency,target currency)</b></p>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <form th:action="@{/convert}" th:object="${result}" method="post">
+        <input type="text" id="second" name="data" />
+        <button type="submit">Сonvert</button>
+    </form>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <p><b>Get tickets info (enter the ticket names without spaces separated by commas)</b></p>
 </div>
 <div sec:authorize="isAuthenticated()">
     <form th:action="@{/get-stock-quotes}" th:object="${tickets}" method="post">
-        <input type="text" id="second" name="data" />
+        <input type="text" id="third" name="data" />
         <button type="submit">Real-time</button>
     </form>
 </div>
 <div sec:authorize="isAuthenticated()">
     <form th:action="@{/get-historical-quotes}" th:object="${tickets}" method="post">
-        <input type="text" id="third" name="data" />
+        <input type="text" id="fourth" name="data" />
         <button type="submit">Historical</button>
     </form>
 </div>
