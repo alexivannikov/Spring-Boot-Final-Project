@@ -5,9 +5,6 @@ import lombok.Builder;
 
 @Builder
 public class AuthRequest {
-    @JsonProperty("email")
-    private String email;
-
     @JsonProperty("client_id")
     private String clientId;
 
@@ -23,8 +20,7 @@ public class AuthRequest {
     @Override
     public String toString() {
         return "{" +
-                "email=\"" + email + '\"' +
-                ", clientId=\"" + clientId + '\"' +
+                "clientId=\"" + clientId + '\"' +
                 ", clientSecret=\"" + clientSecret + '\"' +
                 ", audience=\"" + audience + '\"' +
                 ", grantType=\"" + grantType + '\"' +

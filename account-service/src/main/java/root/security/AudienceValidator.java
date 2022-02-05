@@ -6,7 +6,6 @@ import org.springframework.security.oauth2.core.OAuth2TokenValidatorResult;
 import org.springframework.security.oauth2.jwt.Jwt;
 
 class AudienceValidator implements OAuth2TokenValidator<Jwt> {
-
     private final String audience;
 
     AudienceValidator(String audience) {
@@ -16,14 +15,13 @@ class AudienceValidator implements OAuth2TokenValidator<Jwt> {
     @Override
     public OAuth2TokenValidatorResult validate(Jwt jwt) {
         if (jwt.getAudience().contains(audience)) {
-            String s = "";
-
             jwt.getHeaders();
+
             return OAuth2TokenValidatorResult.success();
         }
 
-        String s = "";
         OAuth2Error error = new OAuth2Error("invalid_token", "Audience is not equals", null);
+
         return OAuth2TokenValidatorResult.failure(error);
     }
 

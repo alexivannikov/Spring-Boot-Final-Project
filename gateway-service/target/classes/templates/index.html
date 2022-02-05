@@ -20,7 +20,7 @@
 </div>
 <div sec:authorize="isAuthenticated()">
     <form th:action="@{/transfer}" th:object="${transfer}" method="post">
-        <input type="text" id="third" name="data" />
+        <input type="text" id="first" name="data" />
         <button type="submit">Execute</button>
     </form>
 </div>
@@ -29,13 +29,13 @@
 </div>
 <div sec:authorize="isAuthenticated()">
     <form th:action="@{/get-stock-quotes}" th:object="${tickets}" method="post">
-        <input type="text" id="first" name="data" />
+        <input type="text" id="second" name="data" />
         <button type="submit">Real-time</button>
     </form>
 </div>
 <div sec:authorize="isAuthenticated()">
     <form th:action="@{/get-historical-quotes}" th:object="${tickets}" method="post">
-        <input type="text" id="second" name="data" />
+        <input type="text" id="third" name="data" />
         <button type="submit">Historical</button>
     </form>
 </div>

@@ -20,6 +20,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.4.2.Final/mapstruct-1.4.2.Final.jar" />
         </processorPath>
         <module name="account-service" />
+        <module name="currency-service" />
       </profile>
     </annotationProcessing>
   </component>
@@ -27,6 +28,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Final Project" options="-parameters" />
       <module name="account-service" options="-parameters" />
+      <module name="currency-service" options="-parameters" />
       <module name="discovery-service" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
     </option>

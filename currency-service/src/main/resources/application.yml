@@ -1,25 +1,20 @@
 server:
-  port: 8020
+  port: 8030
+
+token: b3b153dae2f9070edf185c150075cf18
 
 auth:
-  audience: transfer-service
+  audience: currency-service
 
 spring:
   application:
-    name: transfer-service
+    name: currency-service
   security:
+    email: aleksejivanniko@yandex.ru
     oauth2:
       resource-server:
         jwt:
           issuer-uri: https://dev-z6wzbvpa.us.auth0.com/
-  datasource:
-    url: jdbc:postgresql://localhost:5432/account
-    username: postgres
-    password: 123
-    jpa:
-      show-sql: true
-      hibernate:
-        ddl-auto: validate
 
 eureka:
   client:

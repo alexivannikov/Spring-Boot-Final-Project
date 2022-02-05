@@ -1,5 +1,6 @@
 package root.security;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,29 +11,36 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
 import org.springframework.security.oauth2.core.OAuth2TokenValidator;
 import org.springframework.security.oauth2.jwt.*;
+import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationFilter;
 
 @Configuration
-@RequiredArgsConstructor
 @Slf4j
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
     @Value("${auth.audience}")
     private String audience;
 
     @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
     private String issuerUri;
 
+    private final ObjectMapper objectMapper;
+
+    public SecurityConfiguration(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/transfer/me-to-me").hasAnyAuthority("SCOPE_BASE", "SCOPE_PRO")
-                .antMatchers("/transfer/to-another-user").hasAuthority("SCOPE_BASE")
+                .antMatchers("/transfer").hasAuthority("SCOPE_PRO")
+                .antMatchers("/bank-book").hasAuthority("SCOPE_PRO")
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
                 .and()
                 .oauth2ResourceServer().jwt();
+
+        http.addFilterAfter(userInfoFilter(), BearerTokenAuthenticationFilter.class);
     }
 
     @Bean
@@ -47,5 +55,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         jwtDecoder.setJwtValidator(delegatingValidator);
 
         return jwtDecoder;
+    }
+
+    @Bean
+    UserInfoFilter userInfoFilter() {
+        return new UserInfoFilter(objectMapper);
     }
 }

@@ -5,8 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import root.model.UserInfo;
 import root.model.dto.BankBookDto;
 import root.model.dto.TransactionDto;
+import root.security.UserInfoFilter;
 import root.service.BankBookService;
 import root.validation.EntityCreated;
 import root.validation.EntityUpdated;
@@ -19,9 +21,6 @@ import java.util.List;
 public class BankBookController {
     private final BankBookService bankBookService;
 
-    @Value("${spring.security.email}")
-    private String userEmail;
-
     public BankBookController(BankBookService bankBookService){
         this.bankBookService = bankBookService;
     }
@@ -29,7 +28,7 @@ public class BankBookController {
     @PostMapping(value = "/bank-book", produces = "application/json", consumes = "application/x-www-form-urlencoded")
     public List <BankBookDto> getUserAccounts() throws Exception {
 
-        return bankBookService.findAllBankBookDtoOfUser(userEmail);
+        return bankBookService.findAllBankBookDtoOfUser(UserInfoFilter.userInfo.getEmail());
     }
 
 }
