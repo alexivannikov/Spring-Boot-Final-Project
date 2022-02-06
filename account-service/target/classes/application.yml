@@ -4,7 +4,7 @@ server:
 auth:
   audience: transfer-service
 
-convert-url: http://localhost:8010/convert
+convert-url: http://localhost:8010/account-amount-to-rub
 
 spring:
   application:

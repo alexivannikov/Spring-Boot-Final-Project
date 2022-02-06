@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 public class ConvertController {
     private final CurrencyServiceApi currencyServiceApi;
 
-    @PostMapping(value = "/convert", produces = "application/json", consumes = {"text/plain", "application/x-www-form-urlencoded"})
+    @PostMapping(value = {"/convert", "account-amount-to-rub"}, produces = "application/json", consumes = {"text/plain", "application/x-www-form-urlencoded"})
     public Response getStockQuotes(@RequestBody String requestParameter) {
         String converterDetails = "";
 

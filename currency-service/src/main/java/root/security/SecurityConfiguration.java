@@ -23,12 +23,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-               .anonymous();
+                .antMatcher("account-amount-to-rub")
+                .authorizeRequests()
+                .antMatchers("/convert").hasAuthority("SCOPE_BASE")
+                .and()
+                .authorizeRequests().anyRequest().authenticated()
+                .and()
+                .oauth2ResourceServer().jwt();
     }
 
     @Bean
     JwtDecoder jwtDecoder() {
         NimbusJwtDecoder jwtDecoder = JwtDecoders.fromOidcIssuerLocation(issuerUri);
+
         OAuth2TokenValidator<Jwt> audienceValidator = new AudienceValidator(audience);
         OAuth2TokenValidator<Jwt> issuerValidator = JwtValidators.createDefaultWithIssuer(issuerUri);
         OAuth2TokenValidator<Jwt> delegatingValidator = new DelegatingOAuth2TokenValidator<>(issuerValidator, audienceValidator);
