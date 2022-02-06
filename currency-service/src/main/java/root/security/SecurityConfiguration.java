@@ -25,7 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .antMatcher("account-amount-to-rub")
                 .authorizeRequests()
-                .antMatchers("/convert").hasAuthority("SCOPE_BASE")
+                .antMatchers("/convert").hasAuthority("SCOPE_PRO")
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
                 .and()
