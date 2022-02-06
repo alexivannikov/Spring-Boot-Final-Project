@@ -1,0 +1,29 @@
+server:
+  port: 8000
+
+auth:
+  audience: transfer-service
+
+convert-url: http://localhost:8010/convert
+
+spring:
+  application:
+    name: transfer-service
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: https://dev-z6wzbvpa.us.auth0.com/
+  datasource:
+    url: jdbc:postgresql://localhost:5432/account
+    username: postgres
+    password: 123
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: validate
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:9999/eureka}

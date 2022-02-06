@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 @Component
 class CurrencyServiceApiImpl implements CurrencyServiceApi {
     private final String token;
+
     private final String url;
 
     public CurrencyServiceApiImpl(@Value("${token}") String token, @Value("${url}") String url) {
@@ -21,9 +22,8 @@ class CurrencyServiceApiImpl implements CurrencyServiceApi {
     }
 
     @Override
-    public Response getStockQuotesByTicket(BigDecimal amount, String targetCurrency) {
+    public Response convert(BigDecimal amount, String targetCurrency) {
         RestTemplate restTemplate = new RestTemplate();
-
 
         ResponseEntity <Exchange> responseEntity = restTemplate.getForEntity(
                 String.format(url, token, targetCurrency),

@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 8010
 
 url: http://data.fixer.io/api/latest?access_key=%s&base=EUR&symbols=%s
 

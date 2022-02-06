@@ -25,12 +25,12 @@
     </form>
 </div>
 <div sec:authorize="isAuthenticated()">
-    <p><b>Currency converter (enter data for convert in the following format: amount,source currency,target currency)</b></p>
+    <p><b>Currency converter (enter data for convert in the following format: amount,target currency)</b></p>
 </div>
 <div sec:authorize="isAuthenticated()">
     <form th:action="@{/convert}" th:object="${result}" method="post">
         <input type="text" id="second" name="data" />
-        <button type="submit">Сonvert</button>
+        <button type="submit">Convert</button>
     </form>
 </div>
 <div sec:authorize="isAuthenticated()">
