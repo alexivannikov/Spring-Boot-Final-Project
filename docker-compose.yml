@@ -40,7 +40,7 @@ services:
       - EUREKA_URL=http://discovery:9999/eureka
     ports:
       - 8000:8000
-    container_name: stock-container
+    container_name: account-container
     depends_on:
       - discovery
     networks:
@@ -57,7 +57,7 @@ services:
       - EUREKA_URL=http://discovery:9999/eureka
     ports:
       - 8010:8010
-    container_name: stock-container
+    container_name: currency-container
     depends_on:
       - discovery
     networks:
