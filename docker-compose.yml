@@ -35,7 +35,7 @@ services:
         - JAR_FILE=target/*.jar
       context: ../Final Project/account-service
       dockerfile: Dockerfile
-    image: stock-image
+    image: account-image
     environment:
       - EUREKA_URL=http://discovery:9999/eureka
     container_name: account-container
@@ -50,7 +50,7 @@ services:
         - JAR_FILE=target/*.jar
       context: ../Final Project/currency-service
       dockerfile: Dockerfile
-    image: stock-image
+    image: currency-image
     environment:
       - EUREKA_URL=http://discovery:9999/eureka
     container_name: currency-container
