@@ -1,11 +1,11 @@
-C:\Users\Alex\Desktop\Final Project\gateway-service\src\main\java\root\config\RestConfig.java
-C:\Users\Alex\Desktop\Final Project\gateway-service\src\main\java\root\config\CloudGatewayConfig.java
-C:\Users\Alex\Desktop\Final Project\gateway-service\src\main\java\root\config\LogPreFilter.java
-C:\Users\Alex\Desktop\Final Project\gateway-service\src\main\java\root\controller\HomeController.java
-C:\Users\Alex\Desktop\Final Project\gateway-service\src\main\java\root\GatewayApplication.java
-C:\Users\Alex\Desktop\Final Project\gateway-service\src\main\java\root\config\OAuth2WebSecurity.java
-C:\Users\Alex\Desktop\Final Project\gateway-service\src\main\java\root\model\CustomHeaders.java
-C:\Users\Alex\Desktop\Final Project\gateway-service\src\main\java\root\model\UserInfo.java
-C:\Users\Alex\Desktop\Final Project\gateway-service\src\main\java\root\model\AuthRequest.java
-C:\Users\Alex\Desktop\Final Project\gateway-service\src\main\java\root\config\OAuth2ClientGatewayFilter.java
-C:\Users\Alex\Desktop\Final Project\gateway-service\src\main\java\root\model\AuthResponse.java
+C:\Users\Alex\Desktop\Spring (курсы)\Final Project\gateway-service\src\main\java\root\model\AuthRequest.java
+C:\Users\Alex\Desktop\Spring (курсы)\Final Project\gateway-service\src\main\java\root\controller\HomeController.java
+C:\Users\Alex\Desktop\Spring (курсы)\Final Project\gateway-service\src\main\java\root\model\CustomHeaders.java
+C:\Users\Alex\Desktop\Spring (курсы)\Final Project\gateway-service\src\main\java\root\model\UserInfo.java
+C:\Users\Alex\Desktop\Spring (курсы)\Final Project\gateway-service\src\main\java\root\model\AuthResponse.java
+C:\Users\Alex\Desktop\Spring (курсы)\Final Project\gateway-service\src\main\java\root\config\CloudGatewayConfig.java
+C:\Users\Alex\Desktop\Spring (курсы)\Final Project\gateway-service\src\main\java\root\config\OAuth2ClientGatewayFilter.java
+C:\Users\Alex\Desktop\Spring (курсы)\Final Project\gateway-service\src\main\java\root\config\RestConfig.java
+C:\Users\Alex\Desktop\Spring (курсы)\Final Project\gateway-service\src\main\java\root\config\LogPreFilter.java
+C:\Users\Alex\Desktop\Spring (курсы)\Final Project\gateway-service\src\main\java\root\config\OAuth2WebSecurity.java
+C:\Users\Alex\Desktop\Spring (курсы)\Final Project\gateway-service\src\main\java\root\GatewayApplication.java

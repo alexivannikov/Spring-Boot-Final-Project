@@ -1,0 +1,14 @@
+root\model\CustomHeaders$CustomHeadersBuilder.class
+root\model\AuthRequest$AuthRequestBuilder.class
+root\config\CloudGatewayConfig.class
+root\model\AuthRequest.class
+root\config\OAuth2ClientGatewayFilter.class
+root\controller\HomeController.class
+root\config\RestConfig.class
+root\GatewayApplication.class
+root\config\LogPreFilter.class
+root\config\OAuth2WebSecurity.class
+root\model\AuthResponse.class
+root\model\UserInfo.class
+root\model\UserInfo$UserInfoBuilder.class
+root\model\CustomHeaders.class

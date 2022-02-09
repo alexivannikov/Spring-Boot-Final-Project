@@ -10,7 +10,7 @@ import root.model.entity.UserEntity;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-02-07T10:18:20+0300",
+    date = "2022-02-09T17:34:35+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 16.0.1 (Oracle Corporation)"
 )
 @Component

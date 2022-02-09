@@ -11,7 +11,7 @@ import root.model.entity.TransactionEntity;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-02-07T10:18:19+0300",
+    date = "2022-02-09T17:34:34+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 16.0.1 (Oracle Corporation)"
 )
 @Component
