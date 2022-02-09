@@ -45,7 +45,7 @@ class CloudGatewayConfig {
     RouteLocator routeLocator(RouteLocatorBuilder routeLocatorBuilder){
         return routeLocatorBuilder.routes()
                 .route("account-service", r -> r.path(accountPath)
-                        .filters(f -> f.filter(filterFactory.apply(accountAudience)).removeRequestHeader("Cookie"))
+                        .filters(f -> f.filter(filterFactory.apply(accountAudience)).removeRequestHeader("Cookie").stripPrefix(1))
                         .uri(accountUri))
                 .route("currency-service", r -> r.path(currencyPath)
                         .filters(f -> f.filter(filterFactory.apply(currencyAudience)).removeRequestHeader("Cookie").stripPrefix(1))
