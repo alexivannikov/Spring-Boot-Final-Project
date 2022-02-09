@@ -26,7 +26,15 @@ public class UserInfoFilter extends GenericFilterBean {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String userInfoStr = request.getHeader("user-info");
-        userInfo = objectMapper.readValue(userInfoStr, UserInfo.class);
+        try{
+            userInfo = objectMapper.readValue(userInfoStr, UserInfo.class);
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+
+
+        int k = 1;
 
         filterChain.doFilter(servletRequest, servletResponse);
     }

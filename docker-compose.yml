@@ -38,8 +38,6 @@ services:
     image: stock-image
     environment:
       - EUREKA_URL=http://discovery:9999/eureka
-    ports:
-      - 8000:8000
     container_name: account-container
     depends_on:
       - discovery
@@ -55,8 +53,6 @@ services:
     image: stock-image
     environment:
       - EUREKA_URL=http://discovery:9999/eureka
-    ports:
-      - 8010:8010
     container_name: currency-container
     depends_on:
       - discovery
@@ -72,8 +68,6 @@ services:
     image: stock-image
     environment:
       - EUREKA_URL=http://discovery:9999/eureka
-    ports:
-      - 8020:8020
     container_name: stock-container
     depends_on:
       - discovery

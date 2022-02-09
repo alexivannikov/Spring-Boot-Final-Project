@@ -2,13 +2,13 @@ server:
   port: 8000
 
 auth:
-  audience: transfer-service
+  audience: account-service
 
 convert-url: http://localhost:8010/account-amount-to-rub
 
 spring:
   application:
-    name: transfer-service
+    name: account-service
   security:
     oauth2:
       resource-server:

@@ -2,22 +2,19 @@ server:
   port: 8888
 
 service:
-  transfer:
+  account:
     uri: http://localhost:8000
-    bankbook-path: /bank-book
-    transfer-path: /transfer
-    audience: transfer-service
+    path: /account/**
+    audience: account-service
 
   currency:
     uri: http://localhost:8010
-    path: /convert
+    path: /currency/**
     audience: currency-service
 
   stock:
     uri: http://localhost:8020
-    path:
-      stock-quotes: /get-stock-quotes
-      historical-quotes: /get-historical-quotes
+    path: /stock/**
     audience: stock-service
 
 spring:

@@ -8,6 +8,15 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 class CloudGatewayConfig {
+    @Value("${service.account.uri}")
+    private String accountUri;
+
+    @Value("${service.account.path}")
+    private String accountPath;
+
+    @Value("${service.account.audience}")
+    private String accountAudience;
+
     @Value("${service.currency.uri}")
     private String currencyUri;
 
@@ -20,26 +29,11 @@ class CloudGatewayConfig {
     @Value("${service.stock.uri}")
     private String stockUri;
 
-    @Value("${service.stock.path.stock-quotes}")
-    private String stockQuotesPath;
-
-    @Value("${service.stock.path.historical-quotes}")
-    private String historicalQuotesPath;
+    @Value("${service.stock.path}")
+    private String stockPath;
 
     @Value("${service.stock.audience}")
     private String stockAudience;
-
-    @Value("${service.transfer.uri}")
-    private String transferUri;
-
-    @Value("${service.transfer.bankbook-path}")
-    private String bankBookPath;
-
-    @Value("${service.transfer.transfer-path}")
-    private String transferPath;
-
-    @Value("${service.transfer.audience}")
-    private String transferAudience;
 
     private final OAuth2ClientGatewayFilter filterFactory;
 
@@ -50,21 +44,15 @@ class CloudGatewayConfig {
     @Bean
     RouteLocator routeLocator(RouteLocatorBuilder routeLocatorBuilder){
         return routeLocatorBuilder.routes()
-                .route("currency-convert", r -> r.path(currencyPath)
-                        .filters(f -> f.filter(filterFactory.apply(currencyAudience)).removeRequestHeader("Cookie"))
+                .route("account-service", r -> r.path(accountPath)
+                        .filters(f -> f.filter(filterFactory.apply(accountAudience)).removeRequestHeader("Cookie"))
+                        .uri(accountUri))
+                .route("currency-service", r -> r.path(currencyPath)
+                        .filters(f -> f.filter(filterFactory.apply(currencyAudience)).removeRequestHeader("Cookie").stripPrefix(1))
                         .uri(currencyUri))
-                .route("get-stock-quotes", r -> r.path(stockQuotesPath)
-                        .filters(f -> f.filter(filterFactory.apply(stockAudience)).removeRequestHeader("Cookie"))
+                .route("stock-service", r -> r.path(stockPath)
+                        .filters(f -> f.filter(filterFactory.apply(stockAudience)).removeRequestHeader("Cookie").stripPrefix(1))
                         .uri(stockUri))
-                .route("get-historical-quotes", r -> r.path(historicalQuotesPath)
-                        .filters(f -> f.filter(filterFactory.apply(stockAudience)).removeRequestHeader("Cookie"))
-                        .uri(stockUri))
-                .route("bank-book", r -> r.path(bankBookPath)
-                        .filters(f -> f.filter(filterFactory.apply(transferAudience)).removeRequestHeader("Cookie"))
-                        .uri(transferUri))
-                .route("transfer", r -> r.path(transferPath)
-                        .filters(f -> f.filter(filterFactory.apply(transferAudience)).removeRequestHeader("Cookie"))
-                        .uri(transferUri))
                 .build();
     }
 }
